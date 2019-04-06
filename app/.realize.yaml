@@ -1,0 +1,19 @@
+settings:
+  legacy:
+    force: false
+    interval: 0s
+schema:
+- name: go-api-boilerplate
+  path: .
+  commands:
+    run:
+      status: true
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /
+    ignored_paths:
+    - .git
+    - .realize
+    - vendor
