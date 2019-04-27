@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func LoadEnv() {
+func Load() {
 	filePath := ".env"
 	f, err := os.Open(filePath)
 	if err != nil {

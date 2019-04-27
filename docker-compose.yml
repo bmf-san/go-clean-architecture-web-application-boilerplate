@@ -4,7 +4,7 @@ services:
     container_name: "golang"
     build: ./docker/go
     volumes:
-      - ./app:/usr/local/project:delegated
+      - ./src:/usr/local/project:delegated
     ports:
       - "8080:8080"
     depends_on:
