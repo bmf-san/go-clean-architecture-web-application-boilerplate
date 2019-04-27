@@ -6,8 +6,12 @@ schema:
 - name: go-api-boilerplate
   path: .
   commands:
+    build:
+      status: true
+      method: go build -o go_api_boilerplate
     run:
       status: true
+      method: ./go_api_boilerplate
   watcher:
     extensions:
     - go

@@ -1,24 +1,22 @@
 package main
 
 import (
-	"log"
 	"net/http"
-	"os"
 
-	"./config"
-	"./database"
-	"./route"
+	"github.com/bmf-san/go-api-boilerplate/app/infrastructure"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-	config.LoadEnv()
-	db := database.Connect()
+	logger := infrastructure.NewLogger()
+
+	infrastructure.Load(logger)
+
+	sqlHandler, err := infrastructure.NewSQLHandler()
+	if err != nil {
+		logger.LogError("%s", err)
+	}
 
 	mux := http.NewServeMux()
-	route.Dispatch(mux, db)
-
-	if err := http.ListenAndServe(":"+os.Getenv("SERVER_PORT"), mux); err != nil {
-		log.Fatal(err)
-	}
+	infrastructure.Dispatch(logger, sqlHandler, mux)
 }
