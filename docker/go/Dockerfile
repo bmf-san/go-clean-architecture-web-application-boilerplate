@@ -1,8 +1,16 @@
-FROM golang:1.10.7-alpine3.8
+FROM golang:1.11.9-alpine3.9
 
-WORKDIR /usr/local/project
+WORKDIR /go/src/github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git \
+    binutils-gold \
+    curl \
+    g++ \
+    gcc \
+    gnupg \
+    libgcc \
+    linux-headers \
+    make
 RUN go get github.com/go-sql-driver/mysql
 RUN go get github.com/oxequa/realize
 

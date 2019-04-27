@@ -1,18 +1,20 @@
-package config
+package infrastructure
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strings"
+
+	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/usecases"
 )
 
-func LoadEnv() {
+// Load is load configs from a env file.
+func Load(logger usecases.Logger) {
 	filePath := ".env"
+
 	f, err := os.Open(filePath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "File %s could not read: %v\n", filePath, err)
-		os.Exit(1)
+		logger.LogError("%s", err)
 	}
 	defer f.Close()
 
@@ -22,11 +24,11 @@ func LoadEnv() {
 		lines = append(lines, scanner.Text())
 	}
 	if err := scanner.Err(); err != nil {
-		fmt.Fprintf(os.Stderr, "File %s scan error: %v\n", filePath, err)
+		logger.LogError("%s", err)
 	}
 
-	for _, e := range lines {
-		pair := strings.Split(e, "=")
+	for _, l := range lines {
+		pair := strings.Split(l, "=")
 		os.Setenv(pair[0], pair[1])
 	}
 }

@@ -4,7 +4,7 @@ services:
     container_name: "golang"
     build: ./docker/go
     volumes:
-      - ./app:/usr/local/project:delegated
+      - ./app:/go/src/github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app
     ports:
       - "8080:8080"
     depends_on:
@@ -17,7 +17,7 @@ services:
     volumes:
       - mysql_db:/var/lib/mysql:delegated
     environment:
-      - MYSQL_DATABASE=go_api_boilerplate
+      - MYSQL_DATABASE=go_clean_architecture_web_application_boilerplate
       - MYSQL_ROOT_PASSWORD=password
 volumes:
   mysql_db:
