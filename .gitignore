@@ -1,2 +1,9 @@
-/app/.env
 launch.json
+/app/.env
+.DS_STORE
+/app/go_api_boilerplate
+/app/tmp/*
+!/app/tmp/.gitkeep
+/app/log/*
+!/app/log/.gitkeep
+.vscode/
