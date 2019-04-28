@@ -10,12 +10,12 @@ import (
 )
 
 type userHandler struct {
-	UserRepository repository.UserRepositoryImpl
+	UserRepository repository.UserRepository
 }
 
 func NewUserHandler(sqlHandler database.SqlHandler) *userHandler {
 	return &userHandler{
-		UserRepository: repository.UserRepositoryImpl{
+		UserRepository: &repository.UserRepositoryImpl{
 			SqlHandler: sqlHandler,
 		},
 	}
@@ -29,4 +29,14 @@ func (handler *userHandler) List(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(users)
+}
+
+func (handler *userHandler) Show(w http.ResponseWriter, r *http.Request) {
+	user, err := handler.UserRepository.GetUser()
+	if err != nil {
+		log.Fatalf("show a user error: %s", err)
+		http.Error(w, "", http.StatusInternalServerError)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(user)
 }

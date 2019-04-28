@@ -1,4 +1,4 @@
-FROM golang:1.10.7-alpine3.8
+FROM golang:1.11.9-alpine3.9
 
 WORKDIR /usr/local/project
 
