@@ -12,28 +12,61 @@ This is an api boilerplate built with golang.
 
 After running docker, you need to execute sql files in `app/database/sql`.
 
+# Architecture
+```
+src
+├── database                      ･･･ Out of layer packages
+│   ├── migrations
+│   │   └── schema.sql
+│   └── seeds
+│       └── faker.sql
+├── domain                        ･･･ Entities Layer
+│   └── user.go
+├── infrastructure                ･･･ Frameworks & Drivers Layer
+│   ├── database                  
+│   │   └── sqlhandler.go
+│   ├── router
+│   │   └── router.go
+│   └── env 
+│       └── env.go
+├── interfaces                    ･･･ Interface Layer
+│   ├── controllers
+│   │   └── user_controller.go
+│   ├── database
+│   │   └── sqlhandler.go
+│   └── repositories
+│       └── user_repository.go
+├── main.go
+└── usecases                      ･･･ Usecases Layer
+    └── repositories
+        └── user_repository.go
+```
+
+| Layer                | Directory      | Sub directory                        |
+|----------------------|----------------|--------------------------------------|
+| Frameworks & Drivers | infrastructure | database, router, env                |
+| Interface            | interfaces     | controllers, database, repositories  |
+| Usecases             | usecases       | repositories                         |
+| Entities             | domain         | ex. user.go                          |
+
 # API Document
 // TODO
-// list	一覧を取得する
-// show	IDを指定して、一件取得する
-// insert	新規作成する
-// update	上書きする
-// patch	部分的に上書きする
-// delete	指定したIDに対応するものを削除する
 
 
-// TODO: method 振り分け
-// switch r.Method {
-// 	case http.MethodPost:
-//     	Register(w, r)
-// 	case http.MethodGet:
-//     	Reader(w, r)
-// 	case http.MethodPut:
-//     	Updater(w, r)
-// 	case http.MethodDelete:
-//     	Deleter(w, r)
-// 	default:
-//     	NotFoundResources(w, r)
+# Controller method naming rule
+- index
+  - Display a listing of the resource.
+- show
+  - Display the specified resource.
+- store
+  - Store a newly created resource in storage.
+- update
+  - Update the specified resource in storage.
+- destory
+  - Remove the specified resource from storage.
+
+This naming rule is referring to laravel's rest api methods.
+cf. [laravel](https://laravel.com/)
 
 # References
 - [github - rymccue/golang-standard-lib-rest-api](https://github.com/rymccue/golang-standard-lib-rest-api)
@@ -42,3 +75,4 @@ After running docker, you need to execute sql files in `app/database/sql`.
 - [github - hirotakan/go-cleanarchitecture-sample](https://github.com/hirotakan/go-cleanarchitecture-sample)
 - [github - ponzu-cms/ponzu](https://github.com/ponzu-cms/ponzu)
 - [クリーンアーキテクチャの書籍を読んだのでAPIサーバを実装してみた](https://qiita.com/yoshinori_hisakawa/items/f934178d4bd476c8da32)
+- [Go × Clean Architectureのサンプル実装](http://nakawatch.hatenablog.com/entry/2018/07/11/181453)

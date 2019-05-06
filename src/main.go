@@ -5,16 +5,16 @@ import (
 	"net/http"
 	"os"
 
-	"./config"
-	"./route"
+	"./infrastructure/env"
+	"./infrastructure/router"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-	config.Load()
+	env.Load()
 
 	mux := http.NewServeMux()
-	route.Dispatch(mux)
+	router.Dispatch(mux)
 
 	if err := http.ListenAndServe(":"+os.Getenv("SERVER_PORT"), mux); err != nil {
 		log.Fatal(err)

@@ -1,0 +1,48 @@
+jobs-references:
+  go-container: &go-container
+    docker:
+      - image: circleci/golang:1.11.9
+    working_directory: /go/src/github.com/github.com/bmf-san/go-api-boilerplate
+  setup_go_packages: &setup_go_packages
+    run:
+      name: Setup go packages
+      command: |
+        go get github.com/golang/lint/golint
+        go get github.com/go-sql-driver/mysql
+
+version: 2
+jobs:
+  golint:
+    <<: *go-container
+    steps:
+      - checkout
+      - *setup_go_packages
+      - run:
+          name: Run golint
+          command: golint ./...
+  vet:
+    <<: *go-container
+    steps:
+      - checkout
+      - *setup_go_packages
+      - run:
+          name: Run vet
+          command: go vet ./...
+  test:
+    <<: *go-container
+    steps:
+      - checkout
+      - *setup_go_packages
+      - run:
+          name: Run test
+          command: go test -v -race ./...
+  
+workflows:
+  version: 2
+  build:
+    jobs:
+      - golint
+      - vet
+      - test
+
+
