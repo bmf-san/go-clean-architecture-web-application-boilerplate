@@ -44,5 +44,3 @@ workflows:
       - golint
       - vet
       - test
-
-
