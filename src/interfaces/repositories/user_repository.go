@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"../../domain"
-	"../database"
+	"github.com/bmf-san/go-api-boilerplate/domain"
+	"github.com/bmf-san/go-api-boilerplate/database"
 )
 
 type UserRepository struct {

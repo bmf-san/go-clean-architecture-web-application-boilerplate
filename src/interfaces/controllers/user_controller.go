@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"../../usecases/interactors"
-	"../database"
-	repository "../repositories"
+	"github.com/bmf-san/go-api-boilerplate/usecases/interactors"
+	"github.com/bmf-san/go-api-boilerplate/infrastructure/database"
+	"github.com/bmf-san/go-api-boilerplate/interfaces/repositories"
 )
 
 type UserController struct {

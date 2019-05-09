@@ -3,8 +3,8 @@ package router
 import (
 	"net/http"
 
-	"../../infrastructure/database"
-	"../../interfaces/controllers"
+	"github.com/bmf-san/go-api-boilerplate/infrastructure/database"
+	"github.com/bmf-san/go-api-boilerplate/interfaces/controllers"
 )
 
 func Dispatch(mux *http.ServeMux) {

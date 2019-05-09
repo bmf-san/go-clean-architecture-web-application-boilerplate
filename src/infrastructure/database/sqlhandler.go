@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"../../interfaces/database"
+	"github.com/bmf-san/go-api-boilerplate/interfaces/database"
 )
 
 type SqlHandler struct {

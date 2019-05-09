@@ -1,8 +1,8 @@
 package interactors
 
 import (
-	"../../domain"
-	"../repositories"
+	"github.com/bmf-san/go-api-boilerplate/domain"
+	"github.com/bmf-san/go-api-boilerplate/usecases/repositories"
 )
 
 type UserInteractor struct {

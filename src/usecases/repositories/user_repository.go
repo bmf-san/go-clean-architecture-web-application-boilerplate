@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"../../domain"
+	"github.com/bmf-san/go-api-boilerplate/domain"
 )
 
 type UserRepository interface {

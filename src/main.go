@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"./infrastructure/env"
-	"./infrastructure/router"
+	"github.com/bmf-san/go-api-boilerplate/infrastructure/env"
+	"github.com/bmf-san/go-api-boilerplate/infrastructure/router"
 	_ "github.com/go-sql-driver/mysql"
 )
 
