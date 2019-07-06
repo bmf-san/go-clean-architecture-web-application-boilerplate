@@ -30,10 +30,13 @@ func NewUserController(sqlHandler SQLHandler, logger usecases.Logger) *UserContr
 func (uc *UserController) Index(w http.ResponseWriter, r *http.Request) {
 	uc.Logger.LogAccess("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 
-	users, err := uc.UserInteractor.ShowUsers()
+	users, err := uc.UserInteractor.Index()
 	if err != nil {
 		uc.Logger.LogError("%s", err)
-		// TODO: To return a error response message
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(users)
@@ -45,10 +48,13 @@ func (uc *UserController) Show(w http.ResponseWriter, r *http.Request) {
 
 	userID, _ := strconv.Atoi(r.URL.Query().Get("id"))
 
-	user, err := uc.UserInteractor.ShowUserByID(userID)
+	user, err := uc.UserInteractor.Show(userID)
 	if err != nil {
 		uc.Logger.LogError("%s", err)
-		// TODO: To return a error response message
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(err)
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(user)

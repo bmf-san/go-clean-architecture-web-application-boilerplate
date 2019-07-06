@@ -1,5 +1,6 @@
 # go-api-boilerplate
 A web application boilerplate built with go and clean architecture.
+Most of this application built by standard libraly.
 
 # Get Started
 `cp app/.env_example app/.env`
@@ -10,7 +11,7 @@ After running docker, you need to execute sql files in `app/database/sql`.
 
 # Architecture
 ```
-app/
+app
 ├── database
 │   ├── migrations
 │   │   └── schema.sql
@@ -19,6 +20,7 @@ app/
 ├── domain
 │   ├── post.go
 │   └── user.go
+├── go_clean_architecture_web_application_boilerplate
 ├── infrastructure
 │   ├── env.go
 │   ├── logger.go
@@ -34,47 +36,59 @@ app/
 │   ├── access.log
 │   └── error.log
 ├── main.go
-├── test.log
 └── usecases
     ├── logger.go
     ├── post_interactor.go
     ├── post_repository.go
     ├── user_interactor.go
     └── user_repository.go
+
+8 directories, 22 files
 ```
 
-| Layer                | Directory      | Sub directory                        |
-|----------------------|----------------|--------------------------------------|
-| Frameworks & Drivers | infrastructure | database, router, env                |
-| Interface            | interfaces     | controllers, database, repositories  |
-| Usecases             | usecases       | repositories                         |
-| Entities             | domain         | ex. user.go                          |
+| Layer                | Directory      |
+|----------------------|----------------|
+| Frameworks & Drivers | infrastructure |
+| Interface            | interfaces     |
+| Usecases             | usecases       |
+| Entities             | domain         |
 
-# API Document
-// TODO: This section will be updated the date when ver.3.0.0 will be released.
+# API
 
+| ENDPOINT | HTTP Method    | Parameters    |
+|----------|----------------|---------------|
+| /users   | GET            |               |
+| /user    | GET            | ?id=[int]     |
+| /posts   | GET            |               |
+| /post    | POST           |               |
+| /post    | DELETE         | ?id=[int]     |
 
 # Controller method naming rule
-Use these word as prefix.
 
-- index
-  - Display a listing of the resource.
-- show
-  - Display the specified resource.
-- store
-  - Store a newly created resource in storage.
-- update
-  - Update the specified resource in storage.
-- destory
-  - Remove the specified resource from storage.
+| Controller Method | HTTP Method | Description                                |
+|-------------------|-------------|--------------------------------------------|
+| Index             | GET         | Display a listing of the resource          |
+| Store             | POST        | Store a newly created resource in storage  |
+| Show              | GET         | Display the specified resource             |
+| Update            | PUT/PATCH   | Update the specified resource in storage   |
+| Destroy           | DELETE      | Remove the specified resource from storage |
 
 # Repository method naming rule
-Use these word as prefix.
 
-- get
-- add
-- update
-- delete
+| Repository Method | Description                                          |
+|-------------------|------------------------------------------------------|
+| FindByXX          | Returns the entity identified by the given XX        |
+| FindAll           | Returns all entities                                 |
+| Save              | Saves the given entity                               |
+| SaveByXX          | Saves the given entity identified by the given XX    |
+| DeleteByXX        | Deletes the entity identified by the given XX        |
+| Count             | Returns the number of entities                       |
+| ExistsBy          | Indicates whether an entity with the given ID exists |
+
+cf. [Spring Data JPA - Reference Documentation](https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#repositories.core-concepts)
+
+# Tests
+I have no tests because of my laziness, but I will prepare tests in [github - Gobel](https://github.com/bmf-san/Gobel) which is a my more practical clean architecture application with golang.
 
 # References
 - [github - manuelkiessling/go-cleanarchitecture](https://github.com/manuelkiessling/go-cleanarchitecture)

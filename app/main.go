@@ -1,8 +1,6 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/infrastructure"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -17,6 +15,5 @@ func main() {
 		logger.LogError("%s", err)
 	}
 
-	mux := http.NewServeMux()
-	infrastructure.Dispatch(logger, sqlHandler, mux)
+	infrastructure.Dispatch(logger, sqlHandler)
 }

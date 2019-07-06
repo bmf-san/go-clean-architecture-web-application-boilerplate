@@ -9,15 +9,15 @@ type UserInteractor struct {
 	UserRepository UserRepository
 }
 
-// ShowUsers represents a service which is related to get all users.
-func (ui *UserInteractor) ShowUsers() (users domain.Users, err error) {
+// Index is display a listing of the resource.
+func (ui *UserInteractor) Index() (users domain.Users, err error) {
 	users, err = ui.UserRepository.FindAll()
 
 	return
 }
 
-// ShowUserByID represents a service which is related to get a user.
-func (ui *UserInteractor) ShowUserByID(userID int) (user domain.User, err error) {
+// Show is display the specified resource.
+func (ui *UserInteractor) Show(userID int) (user domain.User, err error) {
 	user, err = ui.UserRepository.FindByID(userID)
 
 	return
