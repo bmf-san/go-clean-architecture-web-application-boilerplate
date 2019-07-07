@@ -9,13 +9,13 @@ type UserRepository struct {
 	SQLHandler SQLHandler
 }
 
-// FindAll return a listing of the resource of users.
+// FindAll is returns the number of entities.
 func (ur *UserRepository) FindAll() (users domain.Users, err error) {
 	const query = `
-		select
+		SELECT
 			id,
 			name
-		from
+		FROM
 			users
 	`
 	rows, err := ur.SQLHandler.Query(query)
@@ -46,15 +46,15 @@ func (ur *UserRepository) FindAll() (users domain.Users, err error) {
 	return
 }
 
-// FindByID return the specified resource of a user.
+// FindByID is returns the entity identified by the given id.
 func (ur *UserRepository) FindByID(userID int) (user domain.User, err error) {
 	const query = `
-		select
+		SELECT
 			id,
 			name
-		from
+		FROM
 			users
-		where
+		WHERE
 			id = ?
 	`
 	row, err := ur.SQLHandler.Query(query, userID)

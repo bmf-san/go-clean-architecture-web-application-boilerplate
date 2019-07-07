@@ -13,5 +13,6 @@ RUN apk add --no-cache git \
     make
 RUN go get github.com/go-sql-driver/mysql
 RUN go get github.com/oxequa/realize
+RUN go get -u github.com/go-chi/chi
 
 CMD realize start
