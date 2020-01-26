@@ -88,7 +88,7 @@ app
 cf. [Spring Data JPA - Reference Documentation](https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#repositories.core-concepts)
 
 # Tests
-I have no tests because of my laziness, but I will prepare tests in [github - Gobel](https://github.com/bmf-san/Gobel) which is a my more practical clean architecture application with golang.
+I have no tests because of my laziness, but I will prepare tests in [github - gobel-api](https://github.com/bmf-san/gobel-api) which is a my more practical clean architecture application with golang.
 
 # References
 - [github - manuelkiessling/go-cleanarchitecture](https://github.com/manuelkiessling/go-cleanarchitecture)
