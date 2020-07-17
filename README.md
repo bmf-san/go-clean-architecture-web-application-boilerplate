@@ -1,4 +1,4 @@
-# go-api-boilerplate
+# go-clean-architecture-web-application-boilerplate
 A web application boilerplate built with go and clean architecture.
 Most of this application built by standard libraly.
 
@@ -20,7 +20,6 @@ app
 ├── domain
 │   ├── post.go
 │   └── user.go
-├── go_clean_architecture_web_application_boilerplate
 ├── infrastructure
 │   ├── env.go
 │   ├── logger.go
