@@ -5,11 +5,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/usecases"
+	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/interfaces"
 )
 
 // Load is load configs from a env file.
-func Load(logger usecases.Logger) {
+func Load(logger interfaces.Logger) {
 	filePath := ".env"
 
 	f, err := os.Open(filePath)

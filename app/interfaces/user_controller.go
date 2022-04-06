@@ -11,11 +11,11 @@ import (
 // A UserController belong to the interface layer.
 type UserController struct {
 	UserInteractor usecases.UserInteractor
-	Logger         usecases.Logger
+	Logger         Logger
 }
 
 // NewUserController returns the resource of users.
-func NewUserController(sqlHandler SQLHandler, logger usecases.Logger) *UserController {
+func NewUserController(sqlHandler SQLHandler, logger Logger) *UserController {
 	return &UserController{
 		UserInteractor: usecases.UserInteractor{
 			UserRepository: &UserRepository{
