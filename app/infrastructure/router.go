@@ -5,12 +5,11 @@ import (
 	"os"
 
 	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/interfaces"
-	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/usecases"
 	"github.com/go-chi/chi"
 )
 
 // Dispatch is handle routing
-func Dispatch(logger usecases.Logger, sqlHandler interfaces.SQLHandler) {
+func Dispatch(logger interfaces.Logger, sqlHandler interfaces.SQLHandler) {
 	userController := interfaces.NewUserController(sqlHandler, logger)
 	postController := interfaces.NewPostController(sqlHandler, logger)
 
