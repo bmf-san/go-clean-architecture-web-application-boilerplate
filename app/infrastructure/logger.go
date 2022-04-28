@@ -4,13 +4,15 @@ import (
 	"io"
 	"log"
 	"os"
+
+	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/usecases"
 )
 
 // A Logger belong to the infrastructure layer.
 type Logger struct{}
 
 // NewLogger return a Logger.
-func NewLogger() *Logger {
+func NewLogger() usecases.Logger {
 	return &Logger{}
 }
 

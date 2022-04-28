@@ -12,11 +12,11 @@ import (
 // A PostController belong to the interface layer.
 type PostController struct {
 	PostInteractor usecases.PostInteractor
-	Logger         Logger
+	Logger         usecases.Logger
 }
 
 // NewPostController returns the resource of Posts.
-func NewPostController(sqlHandler SQLHandler, logger Logger) *PostController {
+func NewPostController(sqlHandler SQLHandler, logger usecases.Logger) *PostController {
 	return &PostController{
 		PostInteractor: usecases.PostInteractor{
 			PostRepository: &PostRepository{
