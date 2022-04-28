@@ -1,4 +1,4 @@
-package interfaces
+package usecases
 
 // A Logger belong to the usecases layer.
 type Logger interface {
