@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"bufio"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/bmf-san/go-clean-architecture-web-application-boilerplate/app/usecases"
@@ -28,7 +29,12 @@ func Load(logger usecases.Logger) {
 	}
 
 	for _, l := range lines {
-		pair := strings.Split(l, "=")
-		os.Setenv(pair[0], pair[1])
+		pair := regexp.MustCompile(`=`).Split(l, 2)
+
+		if len(pair) > 1 {
+			os.Setenv(strings.TrimSpace(pair[0]), strings.TrimSpace(pair[1]))
+		} else {
+			logger.LogError(".env file. Wrong format for " + pair[0])
+		}
 	}
 }
